@@ -1,0 +1,15 @@
+  
+ FROM centos:latest
+ LABEL Name="Anugrah Chaturvedi"
+ LABEL      Email="kushal.kush867@gmail.com"
+ RUN yum update -y  && yum install -y httpd \
+  zip \
+  unzip
+ ADD https://www.free-css.com/assets/files/free-css-templates/download/page266/radiance.zip /var/www/html
+ WORKDIR /var/www/html
+ RUN unzip radiance.zip
+ RUN cp -rvf radiance/* .
+ CMD ["/usr/sbin/httpd" ,"-D", "FOREGROUND"]
+ EXPOSE 80
+
+                    
